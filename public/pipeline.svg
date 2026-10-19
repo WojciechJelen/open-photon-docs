@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 980" width="960" height="980" font-family="ui-sans-serif, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="13">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="980" fill="#ffffff"/>
+
+  <!-- lanes -->
+  <rect x="20" y="20" width="230" height="860" rx="10" fill="#ecfdf5"/>
+  <rect x="280" y="20" width="360" height="860" rx="10" fill="#eff6ff"/>
+  <rect x="670" y="20" width="270" height="860" rx="10" fill="#f5f3ff"/>
+
+  <text x="135" y="48" text-anchor="middle" font-size="15" font-weight="700" fill="#065f46">Browser</text>
+  <text x="460" y="48" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">Your app (one Node container)</text>
+  <text x="805" y="48" text-anchor="middle" font-size="15" font-weight="700" fill="#4c1d95">Comfy (Cloud or Runpod 5090)</text>
+  <text x="460" y="64" text-anchor="middle" font-size="11" fill="#475569">TanStack Start · SQLite · FFmpeg · @comfyorg/sdk</text>
+  <text x="805" y="64" text-anchor="middle" font-size="11" fill="#475569">ComfyUI runs the workflow graph on the GPU</text>
+
+  <!-- ROW 1 -->
+  <rect x="30" y="82" width="210" height="52" rx="8" fill="#fff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="42" y="104" font-weight="700" fill="#0f172a">1 · Upload driving clip</text>
+  <text x="42" y="122" fill="#475569">3–8 s, one person</text>
+  <line x1="240" y1="108" x2="288" y2="108" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="290" y="82" width="340" height="52" rx="8" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="302" y="104" font-weight="700" fill="#0f172a">Trim to ≤8 s, probe (FFmpeg)</text>
+  <text x="302" y="122" fill="#475569">sha256 → store as asset on disk</text>
+
+  <!-- ROW 2 -->
+  <rect x="30" y="160" width="210" height="52" rx="8" fill="#fff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="42" y="182" font-weight="700" fill="#0f172a">2 · Pick character</text>
+  <text x="42" y="200" fill="#475569">sample or upload (consent)</text>
+  <line x1="240" y1="186" x2="288" y2="186" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="290" y="160" width="340" height="52" rx="8" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="302" y="182" font-weight="700" fill="#0f172a">Store image asset</text>
+  <text x="302" y="200" fill="#475569">sha256, dimensions</text>
+
+  <!-- ROW 3 -->
+  <rect x="30" y="238" width="210" height="52" rx="8" fill="#fff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="42" y="260" font-weight="700" fill="#0f172a">3 · Click Generate</text>
+  <text x="42" y="278" fill="#475569">angle, prompt, seed</text>
+  <line x1="240" y1="264" x2="288" y2="264" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="290" y="238" width="340" height="52" rx="8" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="302" y="260" font-weight="700" fill="#0f172a">INSERT generation row</text>
+  <text x="302" y="278" fill="#475569">idempotency_key + recipe saved before anything is sent</text>
+  <rect x="548" y="246" width="74" height="18" rx="9" fill="#fde68a"/>
+  <text x="585" y="259" text-anchor="middle" font-size="11" font-weight="700" fill="#78350f">preparing</text>
+
+  <!-- ROW 4 -->
+  <rect x="290" y="316" width="340" height="52" rx="8" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="302" y="338" font-weight="700" fill="#0f172a">4 · Upload clip + image to Comfy</text>
+  <text x="302" y="356" fill="#475569">content-addressed: same file twice = free</text>
+  <line x1="630" y1="342" x2="678" y2="342" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="680" y="316" width="250" height="52" rx="8" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="692" y="338" font-weight="700" fill="#0f172a">Files land in input/</text>
+  <text x="692" y="356" fill="#475569">returns filenames for LoadVideo / LoadImage</text>
+
+  <!-- ROW 5 -->
+  <rect x="290" y="394" width="340" height="52" rx="8" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="302" y="416" font-weight="700" fill="#0f172a">5 · buildGraph(template, inputs map, params)</text>
+  <text x="302" y="434" fill="#475569">patch node 240, 189, prompt, seed, size → full API-format JSON</text>
+
+  <!-- ROW 6 -->
+  <rect x="290" y="472" width="340" height="52" rx="8" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="302" y="494" font-weight="700" fill="#0f172a">6 · submit(graph)</text>
+  <text x="302" y="512" fill="#475569">save provider_job_id the instant it returns</text>
+  <rect x="562" y="480" width="60" height="18" rx="9" fill="#fde68a"/>
+  <text x="592" y="493" text-anchor="middle" font-size="11" font-weight="700" fill="#78350f">queued</text>
+  <line x1="630" y1="498" x2="678" y2="498" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="680" y="472" width="250" height="52" rx="8" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="692" y="494" font-weight="700" fill="#0f172a">POST /prompt → job id</text>
+  <text x="692" y="512" fill="#475569">job waits in Comfy's own queue</text>
+
+  <!-- ROW 7 -->
+  <rect x="680" y="550" width="250" height="52" rx="8" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="692" y="572" font-weight="700" fill="#0f172a">7 · GPU renders (minutes)</text>
+  <text x="692" y="590" fill="#475569">events: running, progress %</text>
+  <line x1="680" y1="576" x2="632" y2="576" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="290" y="550" width="340" height="52" rx="8" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="302" y="572" font-weight="700" fill="#0f172a">Relay job.events() as SSE</text>
+  <text x="302" y="590" fill="#475569">closes when the browser disconnects</text>
+  <rect x="562" y="558" width="60" height="18" rx="9" fill="#fde68a"/>
+  <text x="592" y="571" text-anchor="middle" font-size="11" font-weight="700" fill="#78350f">running</text>
+  <line x1="290" y1="576" x2="242" y2="576" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="30" y="550" width="210" height="52" rx="8" fill="#fff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="42" y="572" font-weight="700" fill="#0f172a">Progress bar</text>
+  <text x="42" y="590" fill="#475569">percent only, no ETA</text>
+
+  <!-- ROW 8 -->
+  <rect x="680" y="628" width="250" height="52" rx="8" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="692" y="650" font-weight="700" fill="#0f172a">8 · complete</text>
+  <text x="692" y="668" fill="#475569">output at a signed URL (expires ~6 h)</text>
+  <line x1="680" y1="654" x2="632" y2="654" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="290" y="628" width="340" height="52" rx="8" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="302" y="650" font-weight="700" fill="#0f172a">finalize(id), under a lock</text>
+  <text x="302" y="668" fill="#475569">download → poster frame (FFmpeg) → sha256 → store</text>
+  <rect x="518" y="636" width="104" height="18" rx="9" fill="#fde68a"/>
+  <text x="570" y="649" text-anchor="middle" font-size="11" font-weight="700" fill="#78350f">finalizing → done</text>
+
+  <!-- ROW 9 -->
+  <rect x="290" y="706" width="340" height="52" rx="8" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="302" y="728" font-weight="700" fill="#0f172a">9 · Serve /media/:id.mp4</text>
+  <text x="302" y="746" fill="#475569">Range requests (206) so &lt;video&gt; can seek</text>
+  <line x1="290" y1="732" x2="242" y2="732" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="30" y="706" width="210" height="52" rx="8" fill="#fff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="42" y="728" font-weight="700" fill="#0f172a">Compare · download · remix</text>
+  <text x="42" y="746" fill="#475569">two players, one clock</text>
+
+  <!-- ROW 10 -->
+  <rect x="290" y="784" width="340" height="52" rx="8" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="302" y="806" font-weight="700" fill="#0f172a">10 · Share page /r/:slug</text>
+  <text x="302" y="824" fill="#475569">server-rendered HTML with og:video</text>
+  <line x1="290" y1="810" x2="242" y2="810" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="30" y="784" width="210" height="52" rx="8" fill="#fff" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="42" y="806" font-weight="700" fill="#0f172a">Link unfurls on X</text>
+  <text x="42" y="824" fill="#475569">"use this motion with my character"</text>
+
+  <!-- rules -->
+  <rect x="20" y="900" width="920" height="66" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+  <text x="36" y="922" font-weight="700" fill="#9a3412">Three rules that hold the pipeline together</text>
+  <text x="36" y="940" fill="#431407">• Persist the idempotency key before step 6 and the job id the instant submit() returns — a lost id is an unrecoverable (and already paid) job.</text>
+  <text x="36" y="956" fill="#431407">• jobs.get() is the source of truth; a timer never marks a job done.   • finalize() runs from the SSE path and from status reads, so a restart mid-job costs a progress bar, not a result.</text>
+</svg>
